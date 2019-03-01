@@ -9,22 +9,24 @@ public class ChangePanel : MonoBehaviour
     Animator buttonAnimator;
     Animator currentPanelAnimator;
     Animator desiredPanelAnimator;
-
-    int normalHash = Animator.StringToHash("Normal");
+    CanvasGroup desiredCanvasGroup;
+    CanvasGroup currentCanvasGroup;
     
     void Start()
     {
         buttonAnimator = GetComponent<Animator>();
         currentPanelAnimator = currentPanel.GetComponent<Animator>();
         desiredPanelAnimator = desiredPanel.GetComponent<Animator>();
+        desiredCanvasGroup = desiredPanel.GetComponent<CanvasGroup>();
+        currentCanvasGroup = currentPanel.GetComponent<CanvasGroup>();
     }
 
     public void TogglePanels()
     {
-        buttonAnimator.CrossFade(normalHash, 0f);
-        buttonAnimator.Update(0f);
+        buttonAnimator.Play("Normal");
+        
+        desiredCanvasGroup.interactable = true;
 
-        desiredPanel.SetActive(true);
         audioSource.Play();
         currentPanelAnimator.SetTrigger("Close");
         desiredPanelAnimator.SetTrigger("Open");
