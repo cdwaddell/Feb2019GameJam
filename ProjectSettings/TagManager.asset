@@ -13,12 +13,12 @@ TagManager:
   - UI
   - 
   - 
-  - Ethan
-  - MazeWalls
-  - MazeTurret
-  - MazeTurretBullet
-  - Bg
-  - FPSWeapon
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: GUI
-    uniqueID: 2379361113
+  - name: Ground
+    uniqueID: 999622849
+    locked: 0
+  - name: Player
+    uniqueID: 3248165957
     locked: 0

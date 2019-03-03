@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
-  productGUID: 00000000000000000000000000000000
+  productGUID: 8781a7e242c67dd47a7ea8c5b06a6941
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -639,7 +639,7 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   cloudProjectId: 5bb82087-6ee4-4b5b-8ed2-b117cb5d9158
   framebufferDepthMemorylessMode: 0
-  projectName: 
+  projectName: GameJamFeb2019 (1)
   organizationId: charles-d-waddell
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
