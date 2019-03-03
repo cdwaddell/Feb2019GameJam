@@ -190,6 +190,16 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 26ec253663eaf3748b86b3dc0e908e04, type: 2}
+    - target: {fileID: 3807035526810449487, guid: 16c78d1efb05eac4499907b1f6265ede,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3807035526810449487, guid: 16c78d1efb05eac4499907b1f6265ede,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 6.43
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16c78d1efb05eac4499907b1f6265ede, type: 3}
 --- !u!1001 &413990858
@@ -275,6 +285,16 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 68d0f921f9744d8499bf67ace9516266, type: 2}
+    - target: {fileID: 3807035526810449487, guid: 16c78d1efb05eac4499907b1f6265ede,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3807035526810449487, guid: 16c78d1efb05eac4499907b1f6265ede,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 6.43
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16c78d1efb05eac4499907b1f6265ede, type: 3}
 --- !u!1 &706713134
@@ -410,9 +430,9 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: 2.203091, y: 6.8813357}
-  - {x: 20.68648, y: -10.568103}
-  - {x: 9.526231, y: -21.5761}
-  - {x: -8.783538, y: -3.491688}
+  - {x: 19.536966, y: -9.755481}
+  - {x: 9.050028, y: -20.079536}
+  - {x: -8.083781, y: -3.1239731}
   - {x: 2.3090465, y: 6.871968}
 --- !u!60 &752433319
 PolygonCollider2D:
@@ -440,9 +460,9 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 2.173728, y: 6.8853674}
-      - {x: -8.903252, y: -3.6514838}
-      - {x: 9.455527, y: -21.631357}
-      - {x: 20.723038, y: -10.549982}
+      - {x: -7.953044, y: -2.7649481}
+      - {x: 9.243866, y: -19.714539}
+      - {x: 19.518656, y: -9.520598}
 --- !u!95 &752433320
 Animator:
   serializedVersion: 3
