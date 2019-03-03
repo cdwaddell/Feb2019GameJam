@@ -44,6 +44,18 @@ TagManager:
   - name: Ground
     uniqueID: 999622849
     locked: 0
-  - name: Player
+  - name: Customer
+    uniqueID: 3411386663
+    locked: 0
+  - name: Tables
     uniqueID: 3248165957
+    locked: 0
+  - name: Appliances
+    uniqueID: 3402143737
+    locked: 0
+  - name: Player
+    uniqueID: 229422613
+    locked: 0
+  - name: Folding
+    uniqueID: 2499428405
     locked: 0
