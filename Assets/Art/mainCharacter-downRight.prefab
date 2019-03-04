@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 8364327360422824208}
   - component: {fileID: 2572675583345952980}
   - component: {fileID: 4396740274865328795}
+  - component: {fileID: 3594532055387214580}
   m_Layer: 0
   m_Name: mainCharacter-downRight
   m_TagString: Untagged
@@ -198,6 +199,25 @@ MonoBehaviour:
   m_Bounds:
     m_Center: {x: 0.6015034, y: -0.020810127, z: 0}
     m_Extent: {x: 3.1929712, y: 1.4383688, z: 0}
+--- !u!95 &3594532055387214580
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3671402820061867178}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0e239650852230e48a983a0812e4aba9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4241892012370806207
 GameObject:
   m_ObjectHideFlags: 0
