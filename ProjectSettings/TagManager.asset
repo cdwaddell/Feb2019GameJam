@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - WashStatus
+  - Ready
+  - Done
   layers:
   - Default
   - TransparentFX
