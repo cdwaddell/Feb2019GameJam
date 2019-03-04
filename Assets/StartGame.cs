@@ -7,7 +7,7 @@ public class StartGame : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            SceneManager.LoadScene("CutScene");
+            SceneManager.LoadScene("storeScene");
         }
     }
 }
