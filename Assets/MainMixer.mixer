@@ -15,7 +15,17 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 9d503b609557f0a4eac92d4b1105b112
+    name: CustomerVol
+  - guid: b7be3c2807c4fa2429d4010f8bb9e7c0
+    name: DryVol
+  - guid: d116a234dcb8b3c429a7b8d1e6e038fe
+    name: FoldVol
+  - guid: 468d4536f9d416341aec22eec3ecab27
+    name: PressVol
+  - guid: 8c64fe7b19a81a540b638e0c84a7649f
+    name: WashVol
   m_AudioMixerGroupViews:
   - guids:
     - 07974dcf415d8464dade1e4d87502ece
@@ -74,7 +84,11 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: f28ffe3ab3f25d44891b17356c36b7ec
   m_FloatValues:
-    9d503b609557f0a4eac92d4b1105b112: -17.29471
+    9d503b609557f0a4eac92d4b1105b112: -80
+    d116a234dcb8b3c429a7b8d1e6e038fe: -80
+    468d4536f9d416341aec22eec3ecab27: -80
+    b7be3c2807c4fa2429d4010f8bb9e7c0: -80
+    8c64fe7b19a81a540b638e0c84a7649f: -80
   m_TransitionOverrides: {}
 --- !u!243 &243111924756212740
 AudioMixerGroupController:
