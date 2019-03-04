@@ -10,7 +10,7 @@ public class OnPersonEnter : MonoBehaviour
 
             var glow = GetComponent<SpriteGlow.SpriteGlowEffect>();
             if (glow != null)
-                glow.enabled = false;
+                glow.OutlineWidth = 3;
         }
     }
 
@@ -19,6 +19,10 @@ public class OnPersonEnter : MonoBehaviour
         if (CheckPlayer(collision))
         {
             Exit(collision.gameObject);
+
+            var glow = GetComponent<SpriteGlow.SpriteGlowEffect>();
+            if (glow != null)
+                glow.OutlineWidth = 0;
         }
     }
 
