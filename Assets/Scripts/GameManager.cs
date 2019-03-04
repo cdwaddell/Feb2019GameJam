@@ -113,43 +113,56 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
         var activeObject = CurrentlyActiveObject;
-        if(Input.GetKey(KeyCode.Space) && activeObject != null)
+        if(!Input.GetKey(KeyCode.Space) && activeObject != null)
         {
-            switch(activeObject.name)
+            var appliance = activeObject.GetComponent<LongPressAppliance>();
+            if(appliance != null)
             {
-                case "FoldingTable":
-                    ProcessFoldingTable(activeObject);
-                    break;
-                case "SortingTable":
-                    ProcessSortingTable(activeObject);
-                    break;
-                case "WasherOrange":
-                case "WasherYellow":
-                    ProcessWasher(activeObject);
-                    break;
-                case "DryerOrange":
-                case "DryerYellow":
-                    ProcessDryer(activeObject);
-                    break;
-                case "Press":
-                    ProcessPress(activeObject);
-                    break;
-                case "CashRegister":
-                    ProcessCashRegister(activeObject);
-                    break;
+                appliance.Interactible = false;
             }
-
-            foreach (Transform order in LaundryQueue.transform)
+        }
+        else if(Input.GetKey(KeyCode.Space) && activeObject != null)
+        {
+            if (Player.GetComponent<PlayerMobility>().IsHolding())
             {
-                if (order.childCount == 0) continue;
-
-                if (order.GetChild(0).gameObject == activeObject)
+                switch (activeObject.name)
                 {
-                    var laundry = order.GetChild(0).GetComponent<Laundry>();
-                    if (laundry != null)
+                    case "FoldingTable":
+                        ProcessFoldingTable(activeObject);
+                        break;
+                    case "SortingTable":
+                        ProcessSortingTable(activeObject);
+                        break;
+                    case "WasherOrange":
+                    case "WasherYellow":
+                        ProcessWasher(activeObject);
+                        break;
+                    case "DryerOrange":
+                    case "DryerYellow":
+                        ProcessDryer(activeObject);
+                        break;
+                    case "Press":
+                        ProcessPress(activeObject);
+                        break;
+                }
+            }
+            else
+            {
+                if(activeObject.name == "CashRegister")
+                    ProcessCashRegister(activeObject);
+
+                foreach (Transform order in LaundryQueue.transform)
+                {
+                    if (order.childCount == 0) continue;
+
+                    if (order.GetChild(0).gameObject == activeObject)
                     {
-                        ProcessClickedOnLaundry(laundry.Order);
-                        laundry.gameObject.transform.SetParent(CustomerPurgatory.transform, false);
+                        var laundry = order.GetChild(0).GetComponent<Laundry>();
+                        if (laundry != null)
+                        {
+                            ProcessClickedOnLaundry(laundry.Order);
+                            laundry.gameObject.transform.SetParent(CustomerPurgatory.transform, false);
+                        }
                     }
                 }
             }
@@ -170,6 +183,12 @@ public class GameManager : MonoBehaviour
             CurrentlyActiveObject = fromGameObject;
         else if (e.Type == PlayerTransitionType.Exit && CurrentlyActiveObject == fromGameObject)
             CurrentlyActiveObject = null;
+
+        if(e.Type == PlayerTransitionType.Exit)
+        {
+            var appliance = fromGameObject.GetComponent<LongPressAppliance>();
+            appliance.Interactible = false;
+        }
     }
 
     private void CustomerEnters()
@@ -201,20 +220,34 @@ public class GameManager : MonoBehaviour
     #region AttendedAppliances
     private void ProcessSortingTable(GameObject activeObject)
     {
-        //TODO: fill this in
-        ProcessAttendedAppliance(activeObject);
+        var clothesParenth = activeObject.transform.Find("Clothes");
+        var player = Player.GetComponent<PlayerMobility>();
+        var mixed = clothesParenth.transform.Find("Mixed");
+
+        if (mixed.gameObject.activeInHierarchy || player.IsHolding())
+        {
+            ProcessAttendedAppliance(activeObject, player);
+            
+            var colored = clothesParenth.transform.Find("Colored");
+            var white = clothesParenth.transform.Find("Whites");
+
+            if (!mixed.gameObject.activeInHierarchy)
+                mixed.gameObject.SetActive(true);
+        }
     }
 
     private void ProcessFoldingTable(GameObject activeObject)
     {
+        var player = Player.GetComponent<PlayerMobility>();
         //TODO: fill this in
-        ProcessAttendedAppliance(activeObject);
+        ProcessAttendedAppliance(activeObject, player);
     }
 
     private void ProcessPress(GameObject activeObject)
     {
+        var player = Player.GetComponent<PlayerMobility>();
         //TODO: fill this in
-        ProcessAttendedAppliance(activeObject);
+        ProcessAttendedAppliance(activeObject, player);
     }
     #endregion
 
@@ -280,13 +313,25 @@ public class GameManager : MonoBehaviour
         //TODO: fill this in
     }
 
-    private void ProcessAttendedAppliance(GameObject activeObject)
+    private void ProcessAttendedAppliance(GameObject activeObject, PlayerMobility player)
     {
-        //TODO: fill this in
+        if (player.IsHolding())
+        {
+
+        }
+        var longPress = activeObject.GetComponent<LongPressAppliance>();
+        if (!longPress.Interactible)
+        {
+            longPress.Interactible = true;
+        }
+        else
+        {
+            //wait for animation to finish
+        }
     }
 
     private void ProcessUnattendedAppliance(GameObject activeObject)
     {
-        //TODO: fill this in
+        var shortPress = activeObject.GetComponent<ShortPressAppliance>();
     }
 }

@@ -93,6 +93,12 @@ namespace Assets.Scripts
         }
 
         private Order HeldOrder = null;
+
+        public bool IsHolding()
+        {
+            return HeldOrder != null;
+        }
+
         public void HoldLaundry(Order order)
         {
             HeldOrder = order;
