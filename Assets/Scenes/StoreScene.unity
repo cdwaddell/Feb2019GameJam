@@ -384,6 +384,16 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 6.43
       objectReference: {fileID: 0}
+    - target: {fileID: 5491764584602490400, guid: 16c78d1efb05eac4499907b1f6265ede,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491764584602490430, guid: 16c78d1efb05eac4499907b1f6265ede,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16c78d1efb05eac4499907b1f6265ede, type: 3}
 --- !u!1 &117925284
@@ -799,6 +809,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 6.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491764584602490400, guid: 16c78d1efb05eac4499907b1f6265ede,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16c78d1efb05eac4499907b1f6265ede, type: 3}
@@ -1653,6 +1668,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491764584602490400, guid: 16c78d1efb05eac4499907b1f6265ede,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16c78d1efb05eac4499907b1f6265ede, type: 3}
@@ -3065,6 +3085,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c6e8bda229082314b8824963d8b7cdeb, type: 2}
+    - target: {fileID: 5491764584602490400, guid: 16c78d1efb05eac4499907b1f6265ede,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16c78d1efb05eac4499907b1f6265ede, type: 3}
 --- !u!1 &1394515636
@@ -4693,6 +4718,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
       value: 1.6376922
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491764584602490400, guid: 16c78d1efb05eac4499907b1f6265ede,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4175857747248196480, guid: 16c78d1efb05eac4499907b1f6265ede, type: 3}
