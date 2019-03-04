@@ -72,6 +72,10 @@ namespace Assets.Scripts
                 SetActiveMovement(false, false, false, true);
             else if(movingRight)
                 SetActiveMovement(false, false, true, false);
+            else if(movingUp)
+                SetActiveMovement(true, false, false, false);
+            else if(movingDown)
+                SetActiveMovement(false, false, false, true);
 
             var moving = movement.x != 0 || movement.y != 0;
             foreach (var anim in animators)
