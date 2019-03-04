@@ -115,8 +115,9 @@ namespace Assets.Scripts
             }
         }
 
-        public void DropLaundry()
+        public Order DropLaundry()
         {
+            var order = HeldOrder;
             HeldOrder = null;
             foreach (Transform child in transform)
             {
@@ -125,10 +126,11 @@ namespace Assets.Scripts
                     if (grandChild.gameObject.name == "basket")
                     {
                         if(HeldOrder == null)
-                            grandChild.gameObject.SetActive(true);
+                            grandChild.gameObject.SetActive(false);
                     }
                 }
             }
+            return order;
         }
     }
 }

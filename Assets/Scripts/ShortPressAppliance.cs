@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShortPressAppliance : OnPersonEnter
+public class ShortPressAppliance : Appliance
 {
     public Order Order { get; set; }
 }

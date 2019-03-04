@@ -118,37 +118,34 @@ public class GameManager : MonoBehaviour
             var appliance = activeObject.GetComponent<LongPressAppliance>();
             if(appliance != null)
             {
-                appliance.Interactible = false;
+                appliance.PauseAnimation();
             }
         }
         else if(Input.GetKey(KeyCode.Space) && activeObject != null)
         {
-            if (Player.GetComponent<PlayerMobility>().IsHolding())
+            switch (activeObject.name)
             {
-                switch (activeObject.name)
-                {
-                    case "FoldingTable":
-                        ProcessFoldingTable(activeObject);
-                        break;
-                    case "SortingTable":
-                        ProcessSortingTable(activeObject);
-                        break;
-                    case "WasherOrange":
-                    case "WasherYellow":
-                        ProcessWasher(activeObject);
-                        break;
-                    case "DryerOrange":
-                    case "DryerYellow":
-                        ProcessDryer(activeObject);
-                        break;
-                    case "Press":
-                        ProcessPress(activeObject);
-                        break;
-                }
+                case "SortingTable":
+                    ProcessSortingTable(activeObject);
+                    break;
+                case "WasherOrange":
+                case "WasherYellow":
+                    ProcessWasher(activeObject);
+                    break;
+                case "DryerOrange":
+                case "DryerYellow":
+                    ProcessDryer(activeObject);
+                    break;
+                case "Press":
+                    ProcessPress(activeObject);
+                    break;
+                case "FoldingTable":
+                    ProcessFoldingTable(activeObject);
+                    break;
             }
-            else
+            if (!Player.GetComponent<PlayerMobility>().IsHolding())
             {
-                if(activeObject.name == "CashRegister")
+                if (activeObject.name == "CashRegister")
                     ProcessCashRegister(activeObject);
 
                 foreach (Transform order in LaundryQueue.transform)
@@ -187,7 +184,10 @@ public class GameManager : MonoBehaviour
         if(e.Type == PlayerTransitionType.Exit)
         {
             var appliance = fromGameObject.GetComponent<LongPressAppliance>();
-            appliance.Interactible = false;
+            if (appliance != null)
+            {
+                appliance.PauseAnimation();
+            }
         }
     }
 
@@ -206,13 +206,19 @@ public class GameManager : MonoBehaviour
     #region UnattendedAppliances
     private void ProcessDryer(GameObject activeObject)
     {
-        //TODO: fill this in
+        var animator = activeObject.GetComponent<Animator>();
+
+        animator.SetTrigger("Close");
+
         ProcessUnattendedAppliance(activeObject);
     }
 
     private void ProcessWasher(GameObject activeObject)
     {
-        //TODO: fill this in
+        var animator = activeObject.GetComponent<Animator>();
+
+        animator.SetTrigger("Close");
+
         ProcessUnattendedAppliance(activeObject);
     }
     #endregion
@@ -238,14 +244,31 @@ public class GameManager : MonoBehaviour
 
     private void ProcessFoldingTable(GameObject activeObject)
     {
+        var clothesParenth = activeObject.transform.Find("Clothes");
         var player = Player.GetComponent<PlayerMobility>();
-        //TODO: fill this in
-        ProcessAttendedAppliance(activeObject, player);
+        var colored = clothesParenth.transform.Find("Colored");
+
+        if (colored.gameObject.activeInHierarchy || player.IsHolding())
+        {
+            ProcessAttendedAppliance(activeObject, player);
+
+            var folded = clothesParenth.transform.Find("Folded");
+            var white = clothesParenth.transform.Find("Whites");
+
+            if (!colored.gameObject.activeInHierarchy)
+            {
+                colored.gameObject.SetActive(true);
+                white.gameObject.SetActive(true);
+            }
+        }
     }
 
     private void ProcessPress(GameObject activeObject)
     {
         var player = Player.GetComponent<PlayerMobility>();
+        var animator = activeObject.GetComponent<Animator>();
+
+        animator.SetTrigger("Close");
         //TODO: fill this in
         ProcessAttendedAppliance(activeObject, player);
     }
@@ -315,18 +338,17 @@ public class GameManager : MonoBehaviour
 
     private void ProcessAttendedAppliance(GameObject activeObject, PlayerMobility player)
     {
-        if (player.IsHolding())
-        {
-
-        }
         var longPress = activeObject.GetComponent<LongPressAppliance>();
-        if (!longPress.Interactible)
+        if (player.IsHolding() && !longPress.Interactible && !longPress.InteractionInProgress)
         {
+            var laundry = player.DropLaundry();
+            longPress.Order = laundry;
             longPress.Interactible = true;
+            longPress.InteractionInProgress = true;
         }
-        else
+        else if(!player.IsHolding())
         {
-            //wait for animation to finish
+            longPress.StartAnimation();
         }
     }
 
