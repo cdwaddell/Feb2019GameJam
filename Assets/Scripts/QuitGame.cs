@@ -6,11 +6,10 @@ public class QuitGame : StateMachineBehaviour
     {
         var inEditor = false;
 #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
         inEditor = true;
 #endif
-        if(inEditor)
-            UnityEditor.EditorApplication.isPlaying = false;
-        else
+        if(!inEditor)
             Application.Quit();
     }
 }
