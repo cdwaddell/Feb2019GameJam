@@ -206,19 +206,11 @@ public class GameManager : MonoBehaviour
     #region UnattendedAppliances
     private void ProcessDryer(GameObject activeObject)
     {
-        var animator = activeObject.GetComponent<Animator>();
-
-        animator.SetTrigger("Close");
-
         ProcessUnattendedAppliance(activeObject);
     }
 
     private void ProcessWasher(GameObject activeObject)
     {
-        var animator = activeObject.GetComponent<Animator>();
-
-        animator.SetTrigger("Close");
-
         ProcessUnattendedAppliance(activeObject);
     }
     #endregion
@@ -354,6 +346,19 @@ public class GameManager : MonoBehaviour
 
     private void ProcessUnattendedAppliance(GameObject activeObject)
     {
+        var player = Player.GetComponent<PlayerMobility>();
         var shortPress = activeObject.GetComponent<ShortPressAppliance>();
+
+        if (player.IsHolding() && !shortPress.InteractionInProgress)
+        {
+            var laundry = player.DropLaundry();
+            shortPress.Order = laundry;
+            shortPress.InteractionInProgress = true;
+
+            shortPress.StartAnimation();
+
+            var animator = activeObject.GetComponent<Animator>();
+            animator.SetTrigger("Close");
+        }
     }
 }
