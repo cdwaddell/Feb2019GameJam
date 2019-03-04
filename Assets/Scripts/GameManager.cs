@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.Experimental.UIElements;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,4 +7,5 @@ public class GameManager : MonoBehaviour
     public GameObject Laundry;
     public GameObject Customers;
     public Canvas Canvas;
+    public AudioMixer AudioMixer;
 }
