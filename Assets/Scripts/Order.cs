@@ -77,7 +77,7 @@ public class Order : MonoBehaviour
         return ++CurrentOrderNumber;
     }
 
-    private string GetOrderString()
+    public string GetOrderString()
     {
         var orderCharArray = new char[2];
         orderCharArray[1] = (char)(Math.DivRem(OrderNumber, 26, out var result) + 65);

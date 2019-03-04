@@ -77,7 +77,7 @@ namespace Assets.Scripts
             else if(movingDown)
                 SetActiveMovement(false, false, false, true);
 
-            var moving = movement.x != 0 || movement.y != 0;
+            var moving = Math.Abs(movement.x) > .001 || Math.Abs(movement.y) > .001;
             foreach (var anim in animators)
             {
                 anim.SetBool("Moving", moving);
@@ -90,6 +90,39 @@ namespace Assets.Scripts
             DownLeft.SetActive(downLeft);
             UpRight.SetActive(upRight);
             DownRight.SetActive(downRight);
+        }
+
+        private Order HeldOrder = null;
+        public void HoldLaundry(Order order)
+        {
+            HeldOrder = order;
+            foreach(Transform child in transform)
+            {
+                foreach(Transform grandChild in child.transform)
+                {
+                    if(grandChild.gameObject.name == "basket")
+                    {
+                        if(HeldOrder != null)
+                            grandChild.gameObject.SetActive(true);
+                    }
+                }
+            }
+        }
+
+        public void DropLaundry()
+        {
+            HeldOrder = null;
+            foreach (Transform child in transform)
+            {
+                foreach (Transform grandChild in child.transform)
+                {
+                    if (grandChild.gameObject.name == "basket")
+                    {
+                        if(HeldOrder == null)
+                            grandChild.gameObject.SetActive(true);
+                    }
+                }
+            }
         }
     }
 }

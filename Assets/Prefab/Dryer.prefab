@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3807035526810449487}
   - component: {fileID: 2426490686902074850}
   - component: {fileID: 3221781492483441716}
+  - component: {fileID: 4175857747248196480}
   m_Layer: 0
   m_Name: Dryer
   m_TagString: Untagged
@@ -161,3 +162,15 @@ MonoBehaviour:
   alphaThreshold: 0.03
   drawOutside: 0
   enableInstancing: 1
+--- !u!114 &4175857747248196480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881093263382503065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f186bad910f83944c9cf25dffe1b7246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
